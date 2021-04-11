@@ -1,20 +1,27 @@
 {
-  "name": "flyc-cli",
-  "version": "0.0.2",
-  "description": "基于react-ts + egg的中后台解决方案脚手架fly",
+  "name": "xioo-cli",
+  "version": "0.0.4",
+  "description": "前端工程智能解决方案",
   "main": "./dist/index.js",
   "bin": {
-    "fly": "./dist/index.js"
+    "xioo": "./dist/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "keywords": [
-    "flyc",
-    "fly",
-    "cli"
+    "xioo",
+    "koa",
+    "node",
+    "react",
+    "server",
+    "CSR",
+    "SSR",
+    "socket",
+    "schedule"
   ],
-  "author": "zhaodeezhu",
+  "author": "Max",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^13.13.4",

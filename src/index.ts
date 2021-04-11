@@ -17,16 +17,35 @@ const download = require('download-git-repo');
 const unloadChar='-';
 const loadedChar='=';
 
-const downloadUrl = 'https://github.com:zhaodeezhu/fly#master';
+const downloadUrl = 'https://github.com:zhaodeezhu/xioo-csr#master';
+const csrUrl = 'https://github.com:zhaodeezhu/xioo-csr#master';
+const ssrUrl = 'https://github.com:zhaodeezhu/xioo-ssr#master'
 
-program.version('0.0.1', '-v, --version');
+program.version('0.0.3', '-v, --version');
 
+
+// program
+//   .command('init <projectName>')
+//   .description('XIOO PROJECT INIT')
+//   .action((projectName) => {
+//     // init(projectName);
+//   })
 
 program
   .command('init <projectName>')
-  .description('初始化项目模板')
-  .action((projectName) => {
-    init(projectName);
+  .option('-c, --csr', 'client side rendering')
+  .option('-s, --ssr', 'server side rendering')
+  .description('XIOO PROJECT INIT')
+  .action((name, options, command) => {
+    if(options.csr) {
+      console.log(colors.cyan('clone CSR project'));
+      init(name, csrUrl);
+    } else if(options.ssr) {
+      console.log(colors.cyan('clone SSR project'));
+      init(name, ssrUrl);
+    } else {
+      console.log('请输入正确的参数')
+    }
   })
 
 program.parse(process.argv);
