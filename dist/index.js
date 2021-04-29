@@ -7,13 +7,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var commander_1 = __importDefault(require("commander"));
 var colors_1 = __importDefault(require("colors"));
 var init_1 = __importDefault(require("./modules/init"));
+var addPage_1 = __importDefault(require("./modules/addPage"));
 var download = require('download-git-repo');
 var unloadChar = '-';
 var loadedChar = '=';
 var downloadUrl = 'https://github.com:zhaodeezhu/xioo-csr#master';
 var csrUrl = 'https://github.com:zhaodeezhu/xioo-csr#master';
 var ssrUrl = 'https://github.com:zhaodeezhu/xioo-ssr#master';
-commander_1.default.version('0.0.3', '-v, --version');
+commander_1.default.version('0.0.5', '-v, --version');
 commander_1.default
     .command('init <projectName>')
     .option('-c, --csr', 'client side rendering')
@@ -31,5 +32,13 @@ commander_1.default
     else {
         console.log('请输入正确的参数');
     }
+});
+commander_1.default
+    .command('page <pageName>')
+    .option('-p, --path <fileName>', 'add Something')
+    .option('-t, --title <fileName>', 'add Something')
+    .action(function (fileName, options, command) {
+    var add = new addPage_1.default({ moduleName: options.path, pageCode: fileName, title: options.title });
+    add.addModule();
 });
 commander_1.default.parse(process.argv);

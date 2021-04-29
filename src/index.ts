@@ -12,6 +12,7 @@ import program from 'commander'
 import * as readline from 'readline'
 import colors from 'colors';
 import init from './modules/init';
+import AddPage from './modules/addPage';
 const download = require('download-git-repo');
 
 const unloadChar='-';
@@ -21,7 +22,7 @@ const downloadUrl = 'https://github.com:zhaodeezhu/xioo-csr#master';
 const csrUrl = 'https://github.com:zhaodeezhu/xioo-csr#master';
 const ssrUrl = 'https://github.com:zhaodeezhu/xioo-ssr#master'
 
-program.version('0.0.3', '-v, --version');
+program.version('0.0.5', '-v, --version');
 
 
 // program
@@ -47,6 +48,16 @@ program
       console.log('请输入正确的参数')
     }
   })
+
+program
+  .command('page <pageName>')
+  .option('-p, --path <fileName>', 'add Something')
+  .option('-t, --title <fileName>', 'add Something')
+  .action((fileName, options, command) => {
+    const add = new AddPage({ moduleName: options.path, pageCode: fileName, title: options.title });
+
+    add.addModule();
+  }) 
 
 program.parse(process.argv);
 
