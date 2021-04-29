@@ -1,6 +1,6 @@
 {
   "name": "xioo-cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "前端工程智能解决方案",
   "main": "./dist/index.js",
   "bin": {
